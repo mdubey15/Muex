@@ -1,0 +1,60 @@
+
+<div class="* header">
+  <h2> Muex: A Music eXchange Marketplace</h2>
+</div>
+<mat-card class="*">
+  <!--<mat-label>Manage Music Product</mat-label>-->
+  <mat-card-title>
+    <span *ngIf="MusicItem.id"> Edit Music Product </span>
+    <span *ngIf="!MusicItem.id"> Music Product </span>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-form-field class="input-width">
+      <mat-label>Title</mat-label>
+      <input [(ngModel)]="MusicItem.title" name="Title" matInput required>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="input-width">
+      <mat-label>Band</mat-label>
+      <input [(ngModel)]="MusicItem.band" name="Band" matInput required>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="input-width">
+      <mat-label>Medium</mat-label>
+      <select matNativeControl required [(ngModel)]="MusicItem.medium">
+        <option value="Vinyl">Vinyl</option>
+        <option value="Tape">Tape</option>
+        <option value="CD">CD</option>
+      </select>
+      <!--<input [(ngModel)]="MusicItem.Medium" name="Medium" matInput placeholder="Medium">-->
+    </mat-form-field>
+    <br />
+    <mat-form-field class="input-width">
+      <mat-label>Owner</mat-label>
+      <input [(ngModel)]="MusicItem.owner" name="Owner" matInput required>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="input-width">
+      <mat-label>Genre</mat-label>
+      <input [(ngModel)]="MusicItem.genre" name="Genre" matInput required>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="!MusicItem.id" class="button" (click)="post(MusicItem)" mat-raised-button color="primary">Submit</button>
+    <button *ngIf="MusicItem.id" class="button" (click)="put(MusicItem)" mat-raised-button color="primary">Update</button>
+    <button *ngIf="MusicItem.id" class="button" (click)="MusicItem = {}" mat-raised-button color="primary">New</button>
+  </mat-card-actions>
+  <div style="padding:30px;">
+    <mat-label>{{MusicItems}} Records found</mat-label>
+  </div>
+  <div style="padding:30px;">
+    <mat-list *ngFor="let MusicItem of MusicItems">
+      <mat-list-item>ID: {{MusicItem.id}} </mat-list-item>
+      <mat-list-item class="clickLink" (click)="this.api.selectMusicItem(MusicItem)">Title: {{MusicItem.title}} </mat-list-item>
+      <mat-list-item>Band: {{MusicItem.band}} </mat-list-item>
+      <mat-list-item>Medium: {{MusicItem.medium}} </mat-list-item>
+      <mat-list-item>Owner: {{MusicItem.owner}} </mat-list-item>
+      <mat-list-item>Genre: {{MusicItem.genre}} </mat-list-item>
+    </mat-list>
+  </div>
+</mat-card>

@@ -1,0 +1,32 @@
+    
+<script src="node_modules\@aspnet\signalr\dist\browser\signalr.js"></script>
+
+    <div id="divMessages" class="messages">
+    </div>
+<div class="* header">
+        <h2> Muex: A Music Exchange Marketplace</h2>
+      </div>
+      <mat-card class="*">
+        <mat-card-title>
+          MueX Deal
+        </mat-card-title>
+        <mat-card-content>
+          <mat-form-field class="input-width">
+                <mat-label>User:</mat-label>
+                <input id="txtUser" type="text" [(ngModel)]="user" matInput>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="input-width">
+            <mat-label>Message:</mat-label>
+            <input id="txtMessage" type="text" [(ngModel)]="message" matInput>
+           
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <button class="button" (click)="send()" mat-raised-button>Send</button>
+            
+        </mat-card-actions>
+      </mat-card>
+      <p *ngFor="let message of messages">
+        {{user}}: {{message}}
+      </p>

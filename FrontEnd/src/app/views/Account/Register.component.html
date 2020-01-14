@@ -1,0 +1,23 @@
+
+<div class="* header">
+    <h2> Muex: A Music eXchange Marketplace</h2>
+  </div>
+  
+  <mat-label>User Registration</mat-label>
+  <mat-card class="*">
+            <form [formGroup]="form" (ngSubmit)="auth.register(form.value)">
+        <mat-form-field class="input-width">
+            <mat-label>Email</mat-label>
+            <input name="Email" type="email" matInput formControlName="email">
+          </mat-form-field>
+          <br />
+          <mat-form-field class="input-width">
+            <mat-label>Password</mat-label>
+            <input name="Password" type="password" matInput formControlName="password">
+
+          </mat-form-field>
+          <br />
+          <button class="button" mat-raised-button color="primary" [disabled]="!form.valid">Register</button>
+        </form>
+  </mat-card>
+  
